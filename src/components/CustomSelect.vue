@@ -1,16 +1,16 @@
 <template>
-    <div class="container bg-white">
+    <div class="bg-white">
         <div @click="showOptions = !showOptions"
              class="p-2"
              ref="defaultoption"
         >
-            <span class="default capitalize">{{ getDefaultOption }}</span>
+            <span class="default capitalize">{{ selectedOption.label }}</span>
         </div>
         <div class="options overflow-y-scroll" :style="{ maxHeight: showOptions ? calculateHeight + 'px' : '0px' }">
             <div class="option p-2"
                  v-for="opt in options"
                  :key="opt.label"
-                 :class="{ 'bg-orange-500 text-white' : opt.default }"
+                 :class="{ 'bg-orange-500 text-white' : opt === selectedOption }"
                  @click="onOptionClick(opt)"
             >
                 <span class="capitalize">
@@ -37,18 +37,14 @@
         data() {
           return {
               showOptions: false,
-              selectedOption: undefined
+              selectedOption: {}
           }
         },
         computed: {
             getDefaultOption(){
-                if(this.selectedOption === undefined){
-                    return this.options.filter(opt => {
-                        return opt.default === true
-                    })[0].label
-                } else {
-                    return this.selectedOption.label;
-                }
+                return this.options.filter(opt => {
+                    return opt.default === true
+                })[0]
             },
             calculateHeight() {
                 const optionHeight = this.$refs.defaultoption.getBoundingClientRect().height;
@@ -61,6 +57,9 @@
                 this.selectedOption = option;
                 this.showOptions = false;
             }
+        },
+        created() {
+            this.selectedOption = this.getDefaultOption;
         }
     }
 </script>
