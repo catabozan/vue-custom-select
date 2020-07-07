@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <CustomSelect :options="options"></CustomSelect>
+    <CustomSelect :options="options" label="Label test"></CustomSelect>
   </div>
 </template>
 
@@ -14,18 +14,7 @@ export default {
   },
   data(){
     return {
-      options: [
-        {
-          label: 'Localitate',
-          default: true
-        },
-        {
-          label: 'Selimbar'
-        },
-        {
-          label: 'sibiu'
-        }
-      ]
+      options: ['Selimbar', 'Sibiu', 'Bucuresti']
     }
   }
 }
