@@ -14,7 +14,20 @@ export default {
   },
   data(){
     return {
-      options: ['Selimbar', 'Sibiu', 'Bucuresti']
+      options: [
+        {
+          label: 'Sibiu',
+          value: 'sb'
+        },
+        {
+          label: 'Selimbar',
+          value: 'sl'
+        },
+        {
+          label: 'This is a label',
+          value: 'label_value'
+        },
+      ]
     }
   }
 }

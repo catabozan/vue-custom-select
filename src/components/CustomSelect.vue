@@ -4,7 +4,7 @@
              class="p-2"
              ref="defaultoption"
         >
-            <span class="default capitalize">{{ selectedOption }}</span>
+            <span class="default capitalize">{{ selectedOption.label ? selectedOption.label : selectedOption }}</span>
         </div>
         <div class="bg-white w-full options absolute overflow-y-scroll" :style="{ maxHeight: showOptions ? calculateHeight + 'px' : '0px' }">
             <div class="option p-2"
@@ -14,7 +14,7 @@
                  @click="onOptionClick(opt)"
             >
                 <span class="capitalize">
-                    {{ opt }}
+                    {{ opt.label ? opt.label : opt }}
                 </span>
             </div>
         </div>
